@@ -4,8 +4,9 @@ int goal = -1;
 boolean draw;
 ArrayList openlist;//defines as arraylist
 ArrayList closedlist;
-ArrayList nodes;
 ArrayList path;
+ArrayList nodes;
+
 void setup() {
   size(1024, 672); //can be any dimensions as long as divisible by 32- sets size of window
   map = new int[672/32][640/32];//sets size of grid
@@ -23,8 +24,7 @@ void draw() {
   Node t1, t2; //calls class node and initializes variables 
   for (int i = 0; i < nodes.size (); i++ ) { //for i that are less than size of the nodes array list
     t1 = (Node)nodes.get(i);
-    if (i == start) {
-    }
+   
     if (i == start) { //if i in grid=the start node from mouse clicked
       fill(255, 300, 0); //color of start node
     }
@@ -91,15 +91,13 @@ void mouseClicked() {
       if (goal==start) {//if goal and start are the same
         goal = -1;//make goal false
       }
-    } else {//if goal and start already appear on the screen
+    } 
+    else {//if goal and start already appear on the screen
       start = -1;//reset all values
       goal = -1;
       path.clear();//reset board
     }
   }
-}
-// draw = map[int(floor(mouseY/32))][int(floor(mouseX/32))];}}
-void mousePressed() {
 }
 void keyPressed() { //if a keyboard key is pressed
   if (start!=-1 && goal!=-1) {//and if start and goal appear on the grid
